@@ -1,4 +1,4 @@
-const cacheName = "DefaultCompany-pet-prototype-1.0";
+const cacheName = "DefaultCompany-Pet Test-0.0.1";
 const contentToCache = [
     "Build/pwa.loader.js",
     "Build/pwa.framework.js",

@@ -1,9 +1,9 @@
 const cacheName = "DefaultCompany-pet-prototype-1.0";
 const contentToCache = [
     "Build/pwa.loader.js",
-    "Build/pwa.framework.js.unityweb",
-    "Build/pwa.data.unityweb",
-    "Build/pwa.wasm.unityweb",
+    "Build/pwa.framework.js",
+    "Build/pwa.data",
+    "Build/pwa.wasm",
     "TemplateData/style.css"
 
 ];

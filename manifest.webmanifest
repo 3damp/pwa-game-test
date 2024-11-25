@@ -1,6 +1,6 @@
 {
-    "name": "pet-prototype",
-    "short_name": "pet-prototype",
+    "name": "Pet Test",
+    "short_name": "Pet Test",
     "start_url": "index.html",
     "display": "fullscreen",
     "background_color": "#231F20",
@@ -8,7 +8,7 @@
     "description": "",
     "icons": [{
       "src": "TemplateData/icons/unity-logo-dark.png",
-      "sizes": "512x512",
+      "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
     }]

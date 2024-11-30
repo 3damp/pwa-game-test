@@ -1281,10 +1281,10 @@ function dbg(text) {
 // === Body ===
 
 var ASM_CONSTS = {
-  7558608: () => { Module['emscripten_get_now_backup'] = performance.now; },  
- 7558663: ($0) => { performance.now = function() { return $0; }; },  
- 7558711: ($0) => { performance.now = function() { return $0; }; },  
- 7558759: () => { performance.now = Module['emscripten_get_now_backup']; }
+  7558576: () => { Module['emscripten_get_now_backup'] = performance.now; },  
+ 7558631: ($0) => { performance.now = function() { return $0; }; },  
+ 7558679: ($0) => { performance.now = function() { return $0; }; },  
+ 7558727: () => { performance.now = Module['emscripten_get_now_backup']; }
 };
 
 
@@ -1641,20 +1641,6 @@ var ASM_CONSTS = {
         err(text);
       }
     }
-
-  function _GetData(k){
-          const key = UTF8ToString(k);
-          const data = localStorage.getItem(key);
-          console.log("Getting data from key: " + key + ": data: " + data);
-  
-          if (!data) return
-  
-          const bufferSize = lengthBytesUTF8(data) + 1;
-          const buffer = _malloc(bufferSize);
-          stringToUTF8(data, buffer, bufferSize);
-  
-          return buffer;
-      }
 
   function _GetJSLoadTimeInfo(loadTimePtr) {
     loadTimePtr = (loadTimePtr >> 2);
@@ -7898,13 +7884,6 @@ var ASM_CONSTS = {
           requestOptions.timeout = timeout;
   	}
 
-  function _SetData(k, d){
-          const key = UTF8ToString(k);
-          const data = UTF8ToString(d);
-          console.log("Setting data for key: " + key + " with data: " + data);
-          localStorage.setItem(key, data);
-      }
-
   function ___assert_fail(condition, filename, line, func) {
       abort(`Assertion failed: ${UTF8ToString(condition)}, at: ` + [filename ? UTF8ToString(filename) : 'unknown filename', line, func ? UTF8ToString(func) : 'unknown function']);
     }
@@ -9791,6 +9770,10 @@ var ASM_CONSTS = {
   function _abort() {
       abort('native code called abort()');
     }
+
+  function _closeWindow() {
+          window.close();
+      }
 
   function _dlopen(handle) {
       warnOnce('dlopen: Unable to open DLL! Dynamic linking is not supported in WebAssembly builds due to limitations to performance and code size. Please statically link in the needed libraries.');
@@ -12165,6 +12148,20 @@ var ASM_CONSTS = {
     return e.errno;
   }
   }
+
+  function _getData(k){
+          const key = UTF8ToString(k);
+          const data = localStorage.getItem(key);
+          console.log("Getting data from key: " + key + ": data: " + data);
+  
+          if (!data) return
+  
+          const bufferSize = lengthBytesUTF8(data) + 1;
+          const buffer = _malloc(bufferSize);
+          stringToUTF8(data, buffer, bufferSize);
+  
+          return buffer;
+      }
 
   
   
@@ -14704,6 +14701,13 @@ var ASM_CONSTS = {
       // Implicit return WGPU_FALSE, WebGPU is not supported.
     }
 
+  function _setData(k, d){
+          const key = UTF8ToString(k);
+          const data = UTF8ToString(d);
+          console.log("Setting data for key: " + key + " with data: " + data);
+          localStorage.setItem(key, data);
+      }
+
   
   function arraySum(array, index) {
       var sum = 0;
@@ -16641,7 +16645,6 @@ function checkIncomingModuleAPI() {
   ignoredModuleProp('fetchSettings');
 }
 var wasmImports = {
-  "GetData": _GetData,
   "GetJSLoadTimeInfo": _GetJSLoadTimeInfo,
   "GetJSMemoryInfo": _GetJSMemoryInfo,
   "JS_Accelerometer_IsRunning": _JS_Accelerometer_IsRunning,
@@ -16744,7 +16747,6 @@ var wasmImports = {
   "JS_WebRequest_SetRedirectLimit": _JS_WebRequest_SetRedirectLimit,
   "JS_WebRequest_SetRequestHeader": _JS_WebRequest_SetRequestHeader,
   "JS_WebRequest_SetTimeout": _JS_WebRequest_SetTimeout,
-  "SetData": _SetData,
   "__assert_fail": ___assert_fail,
   "__cxa_begin_catch": ___cxa_begin_catch,
   "__cxa_end_catch": ___cxa_end_catch,
@@ -16792,6 +16794,7 @@ var wasmImports = {
   "_munmap_js": __munmap_js,
   "_tzset_js": __tzset_js,
   "abort": _abort,
+  "closeWindow": _closeWindow,
   "dlopen": _dlopen,
   "emscripten_asm_const_int": _emscripten_asm_const_int,
   "emscripten_cancel_main_loop": _emscripten_cancel_main_loop,
@@ -16850,6 +16853,7 @@ var wasmImports = {
   "fd_read": _fd_read,
   "fd_seek": _fd_seek,
   "fd_write": _fd_write,
+  "getData": _getData,
   "gethostbyaddr": _gethostbyaddr,
   "gethostbyname": _gethostbyname,
   "glActiveTexture": _glActiveTexture,
@@ -17127,6 +17131,7 @@ var wasmImports = {
   "llvm_eh_typeid_for": _llvm_eh_typeid_for,
   "navigator_gpu_get_preferred_canvas_format": _navigator_gpu_get_preferred_canvas_format,
   "navigator_gpu_request_adapter_async": _navigator_gpu_request_adapter_async,
+  "setData": _setData,
   "strftime": _strftime,
   "strftime_l": _strftime_l,
   "wgpu_adapter_or_device_get_features": _wgpu_adapter_or_device_get_features,

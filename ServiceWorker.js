@@ -1,4 +1,4 @@
-const CACHE_NAME = "PetTest-0.0.2";
+const CACHE_NAME = "PetTest-0.0.22";
 const contentToCache = [
   "Build/pwa.loader.js",
   "Build/pwa.framework.js",
@@ -9,6 +9,7 @@ const contentToCache = [
 ];
 self.addEventListener('install', function (e) {
   console.log(`[Service Worker] (${CACHE_NAME}) Install`);
+  self.skipWaiting();
 
   e.waitUntil((async function () {
     const cache = await caches.open(CACHE_NAME);

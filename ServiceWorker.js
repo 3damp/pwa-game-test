@@ -1,4 +1,4 @@
-const CACHE_NAME = "PetTest-0.0.3";
+const CACHE_NAME = "PetTest-0.0.4";
 const contentToCache = [
   "Build/pwa.loader.js",
   "Build/pwa.framework.js",

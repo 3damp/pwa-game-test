@@ -1281,10 +1281,10 @@ function dbg(text) {
 // === Body ===
 
 var ASM_CONSTS = {
-  7558576: () => { Module['emscripten_get_now_backup'] = performance.now; },  
- 7558631: ($0) => { performance.now = function() { return $0; }; },  
- 7558679: ($0) => { performance.now = function() { return $0; }; },  
- 7558727: () => { performance.now = Module['emscripten_get_now_backup']; }
+  7558608: () => { Module['emscripten_get_now_backup'] = performance.now; },  
+ 7558663: ($0) => { performance.now = function() { return $0; }; },  
+ 7558711: ($0) => { performance.now = function() { return $0; }; },  
+ 7558759: () => { performance.now = Module['emscripten_get_now_backup']; }
 };
 
 
